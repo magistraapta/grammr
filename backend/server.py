@@ -3,11 +3,21 @@ from dotenv import load_dotenv
 import os
 from model import *
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import json
 
 
 app = FastAPI()
 load_dotenv()
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # take an input and generate response from gemini model
 @app.post("/", response_model=ResponseModel)
@@ -21,7 +31,7 @@ async def sendInput(input: InputModel):
 
     Follow this JSON schema:
     {{
-        "grammar_correction": "Corrected sentence",
+        "corrected_sentence": "Corrected sentence",
         "personalized_advice": {{
             "improvement": "What to improve",
             "tips": "Tip for better writing",

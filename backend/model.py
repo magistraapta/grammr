@@ -6,7 +6,7 @@ class PersonalizedAdvice(BaseModel):
     example: str
 
 class ResponseModel(BaseModel):
-    grammar: str
+    corrected_sentence: str
     personalized_advice: PersonalizedAdvice
     
 class InputModel(BaseModel):
