@@ -73,7 +73,7 @@ export default function InputField() {
                 onChange={(e) => setInputText(e.target.value)}
                 placeholder="Enter your text here"
                 disabled={isLoading}
-                className="border border-gray-300 p-4 rounded-lg" cols="80" rows="10">
+                className="border border-gray-300 p-4 rounded-lg shadow-lg" cols="80" rows="10">
 
                 </textarea>
             </div>
