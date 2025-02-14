@@ -2,7 +2,7 @@
 export default function CorrectionCard({correctedSentence, tips,example, improvement}) {
     return (
         <div className="mt-8 flex justify-center">
-            <div className=" border border-gray-300 rounded-xl p-4 w-8/12">
+            <div className=" border border-gray-300 rounded-xl p-4">
             
             <div className="space-y-5 ">
                 <div>

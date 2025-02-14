@@ -66,68 +66,64 @@ export default function InputField() {
     
 
     return (
-        <div className="grid grid-cols-2 items-center mt-8 mb-8">
-            <div>
-                <div className="flex justify-center">
-                    <textarea
-                    value={inputText}
-                    onChange={(e) => setInputText(e.target.value)}
-                    placeholder="Enter your text here"
-                    disabled={isLoading}
-                    className="border border-gray-300 p-4 rounded-lg shadow-lg" cols="70" rows="10">
-
-                    </textarea>
-                </div>
-
-                {error && (
-                    <div className="text-red-500 text-center mt-2">
-                    {error}
-                    </div>
-                )}
-
-                <div className="flex justify-center mt-2">
-                    <button 
-                        onClick={HandleSubmit}
-                        disabled={!inputText.trim() || isLoading}
-                        className={`py-2 px-4 rounded-md text-white ${
-                            inputText.trim() && !isLoading
-                            ? 'bg-blue-700 hover:bg-blue-800' 
-                            : 'bg-gray-400 cursor-not-allowed'
-                        }`}
-                        >
-                        {isLoading ? 'Processing...' : 'Submit'}
-                    </button>
-                </div>
-            </div>
-            
-
-            {isLoading ? (
-                <div className="flex justify-center">
-                    <div className="  h-[400px] w-8/12 mt-4 p-4  bg-gray-200 animate-pulse rounded-lg ">
-                        <div className="h-6 bg-gray-300 rounded w-3/4 mb-2"></div>
-                        <div className="h-6 bg-gray-300 rounded w-3/4 mb-2"></div>
-                        <div className="h-4 bg-gray-300 rounded w-1/2 mb-2"></div>
-                        <div className="h-4 bg-gray-300 rounded w-2/3"></div>
-                    </div>
-                </div>
-                
-            ) : (
-                correctedSentence && (
-                    <div className="grid grid-cols-1 items-start mb-9">
-                        <CorrectionCard 
-                            correctedSentence={correctedSentence} 
-                            example={example} 
-                            tips={tips} 
-                            improvement={improvement} 
+        <div className="container mx-auto px-4 py-8">
+            <div className="grid items-center lg:grid-cols-2 gap-8 md:grid-cols-1 sm:grid-cols-1">
+                <div className="w-full space-y-4">
+                    <div className="w-full">
+                        <textarea
+                            value={inputText}
+                            onChange={(e) => setInputText(e.target.value)}
+                            placeholder="Enter your text here"
+                            disabled={isLoading}
+                            className="w-full border border-gray-300 p-4 rounded-lg shadow-lg min-h-[200px] md:min-h-[250px] lg:min-h-[300px] resize-y"
                         />
                     </div>
-                )
-            )}
 
-            
+                    {error && (
+                        <div className="text-red-500 text-center mt-2">
+                            {error}
+                        </div>
+                    )}
 
-            
+                    <div className="flex justify-center">
+                        <button 
+                            onClick={HandleSubmit}
+                            disabled={!inputText.trim() || isLoading}
+                            className={`w-full md:w-auto py-3 px-6 rounded-md text-white transition-colors duration-200 ${
+                                inputText.trim() && !isLoading
+                                ? 'bg-blue-700 hover:bg-blue-800' 
+                                : 'bg-gray-400 cursor-not-allowed'
+                            }`}
+                        >
+                            {isLoading ? 'Processing...' : 'Submit'}
+                        </button>
+                    </div>
+                </div>
 
+                <div className="w-full">
+                    {isLoading ? (
+                        <div className="w-full">
+                            <div className="h-[400px] w-full p-4 bg-gray-200 animate-pulse rounded-lg space-y-4">
+                                <div className="h-6 bg-gray-300 rounded w-3/4"></div>
+                                <div className="h-6 bg-gray-300 rounded w-3/4"></div>
+                                <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+                                <div className="h-4 bg-gray-300 rounded w-2/3"></div>
+                            </div>
+                        </div>
+                    ) : (
+                        correctedSentence && (
+                            <div className="w-full mb-9">
+                                <CorrectionCard 
+                                    correctedSentence={correctedSentence} 
+                                    example={example} 
+                                    tips={tips} 
+                                    improvement={improvement} 
+                                />
+                            </div>
+                        )
+                    )}
+                </div>
+            </div>
         </div>
     )
 }
