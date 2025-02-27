@@ -22,5 +22,5 @@ Run the frontend
 ```bash
   npm run dev
 ```
-![Screenshot](web.png)
+![Screenshot](/image/web.png.png)
 
