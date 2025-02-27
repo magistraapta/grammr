@@ -1,8 +1,26 @@
-To do list
 
-- [x] Create User Interface
-- [x] Make sure the frontend can take input and give the right output
-- [ ] Set up rate limiter
-- [ ] Test the code
-- [ ] Dockerize app into one container
-- [ ] Deploy the Website 
+# Grammr
+
+Correct your sentence with AI
+
+
+## Installation
+
+Clone this repo
+
+```bash
+  git clone [this repo]
+  cd grammr
+```
+
+Run the backend
+```bash
+  fastapi dev main.py
+```
+
+Run the frontend
+```bash
+  npm run dev
+```
+![Screenshot](web.png)
+
