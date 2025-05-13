@@ -48,9 +48,9 @@ npm run dev
 2. Enter or paste your text in the input field
 3. Get instant grammar corrections and suggestions
 
-## Screenshot
+## Preview
 
-![Screenshot](https://github.com/user-attachments/assets/976f3a34-ab08-4f22-9677-af460b3c5af6)
+![Preview](https://github.com/user-attachments/assets/94653c27-d133-4e04-8a9d-a50d330c71ac)
 
 ## Contributing
 
