@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import CorrectionCard from './CorrectionCard';
+import HistoryList from './HistoryList';
 
 const InputText = () => {
     const [loading, setLoading] = useState(false);
@@ -9,6 +10,7 @@ const InputText = () => {
     const [example, setExample] = useState('');
     const [improvement, setImprovement] = useState('');
     const [error, setError] = useState(null);
+    const [history, setHistory] = useState([]);
 
     const resetStates = useCallback(() => {
         setCorrectedSentence('');
@@ -40,6 +42,15 @@ const InputText = () => {
             setExample(data.personalized_advice?.example || '');
             setTips(data.personalized_advice?.tip || '');
             setImprovement(data.personalized_advice?.improvement || '');
+
+            // Add to history
+            setHistory(prev => [{
+                originalText: text,
+                correctedSentence: data.corrected_sentence,
+                example: data.personalized_advice?.example || '',
+                tips: data.personalized_advice?.tip || '',
+                improvement: data.personalized_advice?.improvement || ''
+            }, ...prev]);
         } catch (error) {
             setError(error.message || 'Failed to process text. Please try again.');
             resetStates();
@@ -51,6 +62,14 @@ const InputText = () => {
     const handleTextChange = (e) => {
         setText(e.target.value);
         if (error) setError(null);
+    };
+
+    const handleSelectHistory = (item) => {
+        setText(item.originalText);
+        setCorrectedSentence(item.correctedSentence);
+        setExample(item.example);
+        setTips(item.tips);
+        setImprovement(item.improvement);
     };
     
     return (
@@ -107,6 +126,11 @@ const InputText = () => {
                             </button>
                         </div>
                     </form>
+
+                    <HistoryList 
+                        history={history} 
+                        onSelectHistory={handleSelectHistory}
+                    />
                 </div>
 
                 <div className="w-full">
